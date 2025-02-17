@@ -7,7 +7,7 @@ describe('Test backend', () => {
     cy.intercept('GET', 'https://conduit-api.bondaracademy.com/api/tags', {fixture: 'tags.json'})
   })
 
-  it('verify correct request and response', () => {
+  it.only('verify correct request and response', () => {
     const title = faker.lorem.words(3);
     const description = faker.lorem.words(3);
     const body = faker.lorem.words(3);
@@ -45,7 +45,7 @@ describe('Test backend', () => {
       .and('contain', 'testing')
   })
 
-  it.only('verify global feed likes count', () => {
+  it('verify global feed likes count', () => {
     cy.intercept('GET', 'https://conduit-api.bondaracademy.com/api/articles/feed*', {"articles": [], "articlesCount":0})
     cy.intercept('GET', 'https://conduit-api.bondaracademy.com/api/articles*', { fixture: 'articles.json'})
 
